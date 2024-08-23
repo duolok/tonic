@@ -14,6 +14,12 @@ func router() *gin.Engine {
             c.Header("Content-Type", "image/png")
             c.File(file)
         })
+        userRoute.GET("/:generator", func(c *gin.Context) {
+            engine := c.Param("generator")
+            file := generator.DrawOne(engine)
+            c.Header("Content-Type", "image/png")
+            c.File(file)
+        })
     }
 
     return r
