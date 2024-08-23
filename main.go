@@ -1,17 +1,21 @@
 package main
 
 import (
-    "github.com/gin-gonic/gin"
+	"math/rand"
+	"time"
+
+	"github.com/jdxyw/generativeart"
+	"github.com/jdxyw/generativeart/arts"
+	"github.com/jdxyw/generativeart/common"
 )
 
-func router() *gin.Engine {
-    r := gin.Default()
-    r.GET("/", func(c *gin.Context) {
-        c.String(200, "hello")
-    })
-    return r
-}
-
 func main() {
-    router().Run()
+   rand.Seed(time.Now().Unix())
+   c := generativeart.NewCanva(600, 400)
+   c.SetBackground(common.NavajoWhite)
+   c.FillBackground()
+   c.SetLineWidth(1.0)
+   c.SetLineColor(common.Orange)
+   c.Draw(arts.NewColorCircle2(30))
+   c.ToPNG("circle.png")
 }
