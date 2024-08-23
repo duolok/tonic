@@ -21,7 +21,7 @@ var DRAWINGS = map[string]generativeart.Engine{
     "circles":   arts.NewColorCircle2(30),
 }
 
-func drawOne(art string) string {
+func DrawOne(art string) string {
     rand.New(rand.NewSource(time.Now().Unix()))
     c := generativeart.NewCanva(600, 400)
     c.SetColorSchema([]color.RGBA{
