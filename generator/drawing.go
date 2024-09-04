@@ -15,7 +15,7 @@ var DRAWINGS = map[string]generativeart.Engine{
     "julia":     arts.NewJulia(func(z complex128) complex128 { return z*z + complex(-0.1, 0.651) }, 40, 1.5, 1.5),
     "randcicle": arts.NewRandCicle(30, 80, 0.2, 2, 10, 30, true),
     "blackhole": arts.NewBlackHole(200, 400, 0.01),
-    "janus":     arts.NewJanus(5, 10),
+    "janus":     arts.NewJanus(10, 0.2),
     "random":    arts.NewRandomShape(150),
     "silksky":   arts.NewSilkSky(15, 5),
     "circles":   arts.NewColorCircle2(30),
@@ -23,6 +23,7 @@ var DRAWINGS = map[string]generativeart.Engine{
     "noise":     arts.NewNoiseLine(1000),
     "circle":    arts.NewCircleLoop(100),
     "dot":       arts.NewDotLine(100, 20, 50, false),
+    "dotswave":  arts.NewDotsWave(300),
     "colorcanva":arts.NewColorCanve(10),
 }
 
@@ -34,6 +35,19 @@ func optimizeDrawing(art string, c *generativeart.Canva) {
             {0x00, 0x72, 0xFF, 0xFF}, 
             {0x00, 0xD8, 0xA0, 0xFF}, 
         })
+
+    case "dotswave":
+        colors := []color.RGBA{
+            {0xFF, 0xBE, 0x0B, 0xFF},
+            {0xFB, 0x56, 0x07, 0xFF},
+            {0xFF, 0x00, 0x6E, 0xFF},
+            {0x83, 0x38, 0xEC, 0xFF},
+            {0x3A, 0x86, 0xFF, 0xFF},
+        }
+        c := generativeart.NewCanva(500, 500)
+
+        c.SetColorSchema(colors)
+
     case "julia":
         c.SetLineWidth(1.5)
         c.SetColorSchema([]color.RGBA{
@@ -59,8 +73,6 @@ func optimizeDrawing(art string, c *generativeart.Canva) {
             {0xFF, 0x69, 0xB4, 0xFF}, 
         })
     case "random":
-             c.SetBackground(common.White)
-             c.FillBackground()
              c.SetColorSchema([]color.RGBA{
               {0xCF, 0x2B, 0x34, 0xFF},
               {0xF0, 0x8F, 0x46, 0xFF},
@@ -79,11 +91,15 @@ func optimizeDrawing(art string, c *generativeart.Canva) {
             {0x1E, 0x90, 0xFF, 0xFF}, 
         })
     case "circles":
-        c.SetLineWidth(1.0)
-        c.SetColorSchema([]color.RGBA{
-            {0xFF, 0xEB, 0x3B, 0xFF}, 
-            {0xFF, 0x57, 0x33, 0xFF}, 
-        })
+        colors := []color.RGBA{
+          {0x11, 0x60, 0xC6, 0xFF},
+          {0xFD, 0xD9, 0x00, 0xFF},
+          {0xF5, 0xB4, 0xF8, 0xFF},
+          {0xEF, 0x13, 0x55, 0xFF},
+          {0xF4, 0x9F, 0x0A, 0xFF},
+         }
+         c := generativeart.NewCanva(800, 800)
+         c.SetColorSchema(colors)
     case "contour":
         c.SetLineWidth(0.4)
         c.SetColorSchema([]color.RGBA{
@@ -126,7 +142,8 @@ func DrawOne(art string) string {
     rand.New(rand.NewSource(time.Now().Unix()))
     c := generativeart.NewCanva(1920, 1080)
     optimizeDrawing(art, c) 
-
+    c.SetBackground(common.Black)
+    c.FillBackground()
     c.Draw(DRAWINGS[art])
 
     fileName := fmt.Sprintf("/tmp/%s_%f.png", art, rand.Float64())
