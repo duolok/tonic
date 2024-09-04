@@ -1,5 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tonic - Random Image Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bayon&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Roboto', sans-serif;
+      color: #f4f4f9;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Particle Styling */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(120deg, #ffce01 0%, #de6262 100%);
+      opacity: 0.6;
+      z-index: -1; /* Ensure particles are behind */
+    }
+
+    .particle-container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1; /* Ensure container is behind the content */
+    }
+
+    .particle:nth-child(odd) {
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .particle:nth-child(even) {
+      animation: floatReverse 10s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(200px);
+      }
+    }
+
+    @keyframes floatReverse {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-200px);
+      }
+    }
+
+    h1 {
+      font-family: 'Bayon', sans-serif; 
+      font-size: 5em;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #ffffff;
+      margin-left: 5em;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      margin-left: 5em;
+      color: #c8d6e5;
+    }
+
+    /* Card Container */
+    .card-container {
+      margin-left: 5em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      width: 80%;
+      z-index: 1; /* Ensure cards are in front of particles */
+    }
+
+    /* Card Styles */
+    .card {
+      background-color: #1b2838;
+      color: #f4f4f9;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      padding: 20px;
+      width: 200px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-title {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .card-content {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #ff6f61;
+      font-weight: bold;
+      font-size: 1.1em;
+      padding: 10px 20px;
+      border: 2px solid #ff6f61;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .card a:hover {
+      background-color: #ff6f61;
+      color: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+      font-size: 0.9em;
+      color: #9aa5b1;
+      margin-top: 50px;
+      text-align: center;
+      z-index: 1; /* Ensure footer is in front of particles */
+    }
+
+    /* For smaller screens */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
 <body>
-{{range .keys}}
-<p><a href="/image/{{.}}">{{.}}</a></p>
-{{end}}
+  <!-- Particles Container -->
+  <div class="particle-container">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+          <feColorMatrix in="blur" mode="matrix" result="goo"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Generate 200 particles as spans -->
+    <script>
+      for (let i = 0; i < 200; i++) {
+        const particle = document.createElement('span');
+        particle.classList.add('particle');
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.top = `${Math.random() * 100}vh`;
+        particle.style.width = `${Math.random() * 15 + 10}px`;
+        particle.style.height = particle.style.width;
+        particle.style.opacity = Math.random() * 0.6 + 0.2;
+        document.querySelector('.particle-container').appendChild(particle);
+      }
+    </script>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Tonic</h1>
+    <p>Tonic is your random image generator. Click on any option below to refresh your view with an image.</p>
+    
+    <div class="card-container">
+      {{range .keys}}
+      <div class="card">
+        <div class="card-title">{{.}}</div>
+        <a href="/image/{{.}}">View Image</a>
+      </div>
+      {{end}}
+    </div>
+
+    <footer>Refresh your inspiration with new images!</footer>
+  </div>
 </body>
+</html>
+
