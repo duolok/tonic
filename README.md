@@ -7,6 +7,8 @@
 Tonic is a delightful, minimalistic, and easy-to-use image generator. It's designed with simplicity and flexibility in mind, offering a clean way to create generative art using intuitive, Go-based APIs.
 Whether you're a seasoned developer or an artist, Tonic is here to help you generate unique pieces of art with minimal effort. 
 
+This was a fun pet project I've written, but it will evolve as I get to refactor it later.
+
 ## Features
 
 - Intuitive Go-based API for creating generative art
