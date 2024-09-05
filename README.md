@@ -5,11 +5,6 @@
 <a href="https://github.com/duolok/tonic/actions"><img src="https://github.com/duolok/tonic/workflows/Go/badge.svg" alt="Build Status"></a>
 
 Tonic is a delightful, minimalistic, and easy-to-use framework for building customizable 2D art applications. It's designed with simplicity and flexibility in mind, offering a clean way to create generative art using intuitive, Go-based APIs.
-
-<p>
-    <img src="https://example.com/tonic-example.gif" width="100%" alt="Tonic Art Example">
-</p>
-
 Whether you're a seasoned developer or an artist, Tonic is here to help you build, tweak, and generate unique pieces of art with minimal effort. Its lightweight design makes it perfect for hobby projects or integrating creative visuals into larger applications.
 
 ## Features
