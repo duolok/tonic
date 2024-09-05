@@ -34,11 +34,12 @@ To install Tonic, use `go get` to add the package to your project:
 
 ```sh
 go get -u github.com/duolok/tonic
+```
+
 Example Usage
 A simple example to create an artwork using the "circles" generator:
 
-go
-Copy code
+```go
 package main
 
 import (
@@ -56,27 +57,25 @@ func main() {
   })
   r.Run()
 }
+```
+
 To run the code, use:
 
-sh
-Copy code
+```sh
 go run main.go
+```
 Then, visit 0.0.0.0:8080/art/circles to see the generated artwork!
 
-Documentation
+### Documentation
 See the full API documentation.
 
-Middleware
+### Middleware
 Tonic comes with support for useful middleware components for enhanced functionality.
 
-Contributing
+### Contributing
 We welcome contributions from the community! Please see CONTRIBUTING.md for details on submitting patches and the contribution workflow.
 
-Resources We Use with Tonic
-Bubbles: Common UI components for terminal applications.
-Lip Gloss: Tools for styling and formatting terminal UIs.
-Termenv: Advanced ANSI styling.
-vbnet
-Copy code
-
-This `README.md` incorporates the Tonic-related content into a format similar to the Gin frame
+### Resources 
+- Bubbles: Common UI components for terminal applications.
+- Lip Gloss: Tools for styling and formatting terminal UIs.
+- Termenv: Advanced ANSI styling.
