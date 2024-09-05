@@ -74,3 +74,9 @@ We welcome contributions from the community! Please see CONTRIBUTING.md for deta
 - Bubbles: Common UI components for terminal applications.
 - Lip Gloss: Tools for styling and formatting terminal UIs.
 - Termenv: Advanced ANSI styling.
+
+### Gallery
+![menu](assets/menu.png)
+![blackhole](assets/blackhole.png)
+![random](assets/random.png)
+![silksky](assets/silksky.png)
