@@ -12,8 +12,6 @@ Tonic is a delightful, minimalistic, and easy-to-use framework for building cust
 
 Whether you're a seasoned developer or an artist, Tonic is here to help you build, tweak, and generate unique pieces of art with minimal effort. Its lightweight design makes it perfect for hobby projects or integrating creative visuals into larger applications.
 
-To get started, check out the tutorial below, the [examples][examples], the [docs][docs], or some of the common [resources](#resources-we-use-with-tonic).
-
 ## Features
 
 - Intuitive Go-based API for creating generative art
@@ -64,13 +62,10 @@ To run the code, use:
 ```sh
 go run main.go
 ```
-Then, visit 0.0.0.0:8080/art/circles to see the generated artwork!
+### Then, visit 0.0.0.0:8080/art/circles to see the generated artwork!
 
 ### Documentation
 See the full API documentation.
-
-### Middleware
-Tonic comes with support for useful middleware components for enhanced functionality.
 
 ### Contributing
 We welcome contributions from the community! Please see CONTRIBUTING.md for details on submitting patches and the contribution workflow.
