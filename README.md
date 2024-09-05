@@ -22,20 +22,61 @@ To get started, check out the tutorial below, the [examples][examples], the [doc
 - Customizable color palettes, backgrounds, and line properties
 - Supports exporting artwork as PNG files
 
-## Tutorial
+## Getting Started
 
-Tonic is designed to be approachable and simple. Below is a quick tutorial that assumes basic knowledge of Go.
+### Prerequisites
 
-By the way, the non-annotated source code for this program is available [on GitHub][tut-source].
+Tonic requires [Go](https://go.dev/) version 1.18 or higher.
 
-### The Model
+### Installing Tonic
 
-The model represents your canvas and the engine driving your artwork.
+To install Tonic, use `go get` to add the package to your project:
 
-```go
-type model struct {
-    engines  []generativeart.Engine // Generative art engines
-    selected map[int]struct{}       // Selected art pieces
+```sh
+go get -u github.com/duolok/tonic
+Example Usage
+A simple example to create an artwork using the "circles" generator:
+
+go
+Copy code
+package main
+
+import (
+  "github.com/gin-gonic/gin"
+  "github.com/duolok/tonic/generator"
+  "net/http"
+)
+
+func main() {
+  r := gin.Default()
+  r.GET("/art/circles", func(c *gin.Context) {
+    file := generator.DrawOne("circles")
+    c.Header("Content-Type", "image/png")
+    c.File(file)
+  })
+  r.Run()
 }
-```
+To run the code, use:
 
+sh
+Copy code
+go run main.go
+Then, visit 0.0.0.0:8080/art/circles to see the generated artwork!
+
+Documentation
+See the full API documentation.
+
+Middleware
+Tonic comes with support for useful middleware components for enhanced functionality.
+
+Contributing
+We welcome contributions from the community! Please see CONTRIBUTING.md for details on submitting patches and the contribution workflow.
+
+Resources We Use with Tonic
+Bubbles: Common UI components for terminal applications.
+Lip Gloss: Tools for styling and formatting terminal UIs.
+Termenv: Advanced ANSI styling.
+vbnet
+Copy code
+
+This `README.md` incorporates the Tonic-related content into a format similar to the Gin frame
