@@ -59,7 +59,7 @@ To run the code, use:
 ```sh
 go run main.go
 ```
-### Then, visit 0.0.0.0:8080/art/circles to see the generated artwork!
+Then, visit 0.0.0.0:8080/art/circles to see the generated artwork!
 
 ### Documentation
 See the full API documentation.
