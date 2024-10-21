@@ -61,12 +61,6 @@ go run main.go
 ```
 Then, visit 0.0.0.0:8080/art/circles to see the generated artwork!
 
-### Documentation
-See the full API documentation.
-
-### Contributing
-We welcome contributions from the community! Please see CONTRIBUTING.md for details on submitting patches and the contribution workflow.
-
 ### Resources 
 - Bubbles: Common UI components for terminal applications.
 - Lip Gloss: Tools for styling and formatting terminal UIs.
